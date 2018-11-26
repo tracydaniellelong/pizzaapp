@@ -1,4 +1,5 @@
-<form id = 'order' method = 'post' action = '/pizza'>
+<form method = 'post' action = '/pizza'>
+
 Select pizza size:<br>
 <input type = "radio" name = "size" value = "small" checked>Small<br>
 <input type = "radio" name = "size" value = "medium">Medium<br>
@@ -35,9 +36,14 @@ Select extras:<br>
 <input type = "checkbox" name = "extra[]" value = "extra greenpeppers">Extra Green Peppers<br>
 <input type = "checkbox" name = "extra[]" value = "extra pineapple">Extra Pineapple<br>
 <br>
+
+<% if delivery == 'yes'%>
+Enter Address:<br>
+<input type = "text" name = "address" value = "address"><br>
+<%end%>
+
 <input type = "submit" value = "submit">
-<input type = "hidden" value = "<%= quantity%>">
-<input type = "hidden" value = "<%= delivery%>">
+<input type = "hidden" name = "delivery" value = "<%= delivery%>">
 </form>
 
 

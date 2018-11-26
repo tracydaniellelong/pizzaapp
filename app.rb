@@ -5,26 +5,25 @@ get '/' do
 end
 
 post '/home' do
-	quantity = params[:quantity].to_s
 	delivery = params[:delivery]
-	redirect '/pizza?quantity=' + quantity + '&delivery=' + delivery
+	redirect '/pizza?delivery=' + delivery
 end
 
 get '/pizza' do
-	quantity = params[:quantity]
 	delivery = params[:delivery]
-	erb :pizza, locals:{delivery: delivery, quantity: quantity}
+	erb :pizza, locals:{delivery: delivery}
 end
 
 post '/pizza' do
 	size = params[:size]
 	crust = params[:crust]
-	meats = params[:meats].join(',')
+	meats = params[:meats].join(',') if params[:meats]
+	meats = "" if !params[:meats]
 	veggies = params[:veggies].join(',')
 	extra = params[:extra].join(',')
-	quantity = params[:quantity].to_s
 	delivery = params[:delivery]
-	redirect '/summary?size=' + size + '&crust=' + crust + '&meats=' + meats + '&veggies=' + veggies + '&extra=' + extra
+	address = params[:address]
+	redirect '/summary?size=' + size + '&crust=' + crust + '&meats=' + meats + '&veggies=' + veggies + '&extra=' + extra + '&delivery=' + delivery + '&address=' + address
 end
 
 get '/summary' do
@@ -44,14 +43,24 @@ get '/summary' do
 			price += 0.75
 		elsif crust == 'stuffed'
 			price += 1.00
-		else
-			redirect '/'
 		end
 	meats = params[:meats]
+		if meats.length >= 1
+			price += (meats.length * 0.50)
+		end
 	veggies = params[:veggies]
+		if veggies.length >= 1 
+			price += (veggies.length * 0.50)
+		end
 	extra = params[:extra]
+		if extra.length >= 1
+			price += (extra.length * 0.50)
+		end
 	delivery = params[:delivery]
-	quantity = params[:quantity]
-	erb :summary, locals:{size: size, crust: crust, meats: meats, veggies: veggies, extra: extra, price: price, delivery: delivery}
+		if delivery == "yes"
+			price += 20.00
+		end
+	address = params[:address]
+	erb :summary, locals:{size: size, crust: crust, meats: meats, veggies: veggies, extra: extra, price: price, delivery: delivery, address: address}
 end
 
