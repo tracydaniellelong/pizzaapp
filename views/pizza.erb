@@ -1,12 +1,43 @@
-Your pizza:<br>
-Size: <%= size%>
-Crust: <%= crust%>
-Meats: <%= meats%>
-Veggies: <%= veggies%>
-Extra: <%= extra%>
+<form id = 'order' method = 'post' action = '/pizza'>
+Select pizza size:<br>
+<input type = "radio" name = "size" value = "small" checked>Small<br>
+<input type = "radio" name = "size" value = "medium">Medium<br>
+<input type = "radio" name = "size" value = "large">Large<br>
+<br>
 
-<input type = 'hidden' name = "size" value = '<%= size%>'>
-<input type = 'hidden' name = "crust" value = '<%= crust%>'>
-<input type = 'hidden' name = "meats" value = '<%= meats%>'>
-<input type = 'hidden' name = "veggies" value = '<%= veggies%>'>
-<input type = 'hidden' name = "extra" value = '<%= extra%>'>
+Select Crust:<br>
+<input type = "radio" name = "crust" value = "thin" checked>Thin<br>
+<input type = "radio" name = "crust" value = "regular">Regular<br>
+<input type = "radio" name = "crust" value = "stuffed">Stuffed<br>
+<br>
+
+Select meats:<br>
+<input type = "checkbox" name = "meats[]" value = "pepperoni" checked>Pepperoni<br>
+<input type = "checkbox" name = "meats[]" value = "sausage">Sausage<br>
+<input type = "checkbox" name = "meats[]" value = "ham">Ham<br>
+<input type = "checkbox" name = "meats[]" value = "bacon">Bacon<br>
+<br>
+
+Select veggies:<br>
+<input type = "checkbox" name = "veggies[]" value = "mushrooms" checked>Mushrooms<br>
+<input type = "checkbox" name = "veggies[]" value = "banana peppers">Banana Peppers<br>
+<input type = "checkbox" name = "veggies[]" value = "green peppers">Green Peppers<br>
+<input type = "checkbox" name = "veggies[]" value = "pineapple">Pineapple<br>
+<br>
+
+Select extras:<br>
+<input type = "checkbox" name = "extra[]" value = "extra bacon" checked>Extra Bacon<br>
+<input type = "checkbox" name = "extra[]" value = "extra ham">Extra Ham<br>
+<input type = "checkbox" name = "extra[]" value = "extra sausage">Extra Sausage<br>
+<input type = "checkbox" name = "extra[]" value = "extra pepperoni">Extra Pepperoni<br>
+<input type = "checkbox" name = "extra[]" value = "extra mushrooms">Extra Mushrooms<br>
+<input type = "checkbox" name = "extra[]" value = "extra bananapeppers">Banana Peppers<br>
+<input type = "checkbox" name = "extra[]" value = "extra greenpeppers">Extra Green Peppers<br>
+<input type = "checkbox" name = "extra[]" value = "extra pineapple">Extra Pineapple<br>
+<br>
+<input type = "submit" value = "submit">
+<input type = "hidden" value = "<%= quantity%>">
+<input type = "hidden" value = "<%= delivery%>">
+</form>
+
+

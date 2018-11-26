@@ -1,39 +1,8 @@
 <form method = 'post' action = '/home'>
-Select pizza size:<br>
-<input type = "radio" name = "size" value = "small" checked>Small<br>
-<input type = "radio" name = "size" value = "medium">Medium<br>
-<input type = "radio" name = "size" value = "large">Large<br>
-<br>
+How many pizzas would you like? <input type = 'number' name = 'quantity' min = '1' max = '5'><br>
+Delivery?
+	<input type = 'radio' name = 'delivery' value = 'yes'>Yes
+	<input type = 'radio' name = 'delivery' value = 'no'>No<br>
+<input type = 'submit' value = 'submit'>
 
-Select Crust:<br>
-<input type = "radio" name = "crust" value = "thin" checked>Thin<br>
-<input type = "radio" name = "crust" value = "regular">Regular<br>
-<input type = "radio" name = "crust" value = "stuffed">Stuffed<br>
-<br>
-
-Select meats:<br>
-<input type = "checkbox" name = "meats[]" value = "pepperoni" checked>Pepperoni<br>
-<input type = "checkbox" name = "meats[]" value = "sausage">Sausage<br>
-<input type = "checkbox" name = "meats[]" value = "ham">Ham<br>
-<input type = "checkbox" name = "meats[]" value = "bacon">Bacon<br>
-<br>
-
-Select veggies:<br>
-<input type = "checkbox" name = "veggies[]" value = "mushrooms" checked>Mushrooms<br>
-<input type = "checkbox" name = "veggies[]" value = "bananapeppers">Banana Peppers<br>
-<input type = "checkbox" name = "veggies[]" value = "greenpeppers">Green Peppers<br>
-<input type = "checkbox" name = "veggies[]" value = "pineapple">Pineapple<br>
-<br>
-
-Select extras:<br>
-<input type = "checkbox" name = "extra[]" value = "extrabacon" checked>Extra Bacon<br>
-<input type = "checkbox" name = "extra[]" value = "extraham">Extra Ham<br>
-<input type = "checkbox" name = "extra[]" value = "extrasausage">Extra Sausage<br>
-<input type = "checkbox" name = "extra[]" value = "extrapepperoni">Extra Pepperoni<br>
-<input type = "checkbox" name = "extra[]" value = "extramushrooms">Extra Mushrooms<br>
-<input type = "checkbox" name = "extra[]" value = "extrabananapeppers">Banana Peppers<br>
-<input type = "checkbox" name = "extra[]" value = "extragreenpeppers">Extra Green Peppers<br>
-<input type = "checkbox" name = "extra[]" value = "extrapineapple">Extra Pineapple<br>
-<br>
-<input type = "submit" value = "submit">
 </form>
