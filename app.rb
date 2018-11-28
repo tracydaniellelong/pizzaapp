@@ -17,16 +17,18 @@ end
 post '/pizza' do
 	size = params[:size]
 	crust = params[:crust]
-	meats = params[:meats].join(',') if params[:meats]
-	meats = "none" if !params[:meats]
-	veggies = params[:veggies].join(',') if params[:veggies]
-	veggies = "none" if !params[:meats]
-	extra = params[:extra].join(',') if params[:extra]
-	extra = "none" if !params[:extra]
+	cheese = params[:cheese]
+	sauce = params[:sauce]
+	if params[:meats].count > 1
+		meats = params[:meats].join(',')
+	else
+		meats = params[:meats]
+	end
+	veggies = params[:veggies].join(',')
+	extra = params[:extra].join(',')
 	delivery = params[:delivery]
-	address = params[:address] if params[:address]
-	address = "" if !params[:address]
-	redirect '/summary?size=' + size + '&crust=' + crust + '&meats=' + meats + '&veggies=' + veggies + '&extra=' + extra + '&delivery=' + delivery + '&address=' + address
+	address = params[:address]
+	redirect '/summary?size=' + size + '&crust=' + crust + '&cheese=' + cheese + '&sauce=' + sauce + '&meats=' + meats + '&veggies=' + veggies + '&extra=' + extra + '&delivery=' + delivery + '&address=' + address
 end
 
 get '/summary' do
@@ -47,19 +49,41 @@ get '/summary' do
 		elsif crust == 'stuffed'
 			price += 1.00
 		end
-	meats = params[:meats] if params[:meats]
-	meats = "none" if !params[:meats]
-		if meats.length >= 1
-			price += (meats.length * 0.50)
+	cheese = params[:cheese]
+		if cheese == 'regular' || cheese == 'none'
+			price += 0.00
+		else
+			price += 0.50
 		end
-	veggies = params[:veggies] if params[:veggies]
-	veggies = "none" if !params[:veggies]
-		if veggies.length >= 1 
-			price += (veggies.length * 0.50)
+	sauce = params[:sauce]
+		if sauce == 'pizza sauce'
+			price += 0.25
+		elsif sauce == 'ranch'
+			price += 0.30
+		elsif sauce == 'no sauce'
+			price += 0.00
+		else
+			price += 0.50
 		end
-	extra = params[:extra] if params[:extra]
-	extra = "none" if !params[:extra]
-		if extra.length >= 1
+	meats = params[:meats].split(',')
+		if meats.count == 1
+			price += 0.00
+		else
+			meats.delete("no meat")
+			price += (meats.count * 0.25)
+		end
+	veggies = params[:veggies].split(',')
+		if veggies.length == 1 
+			price += 0.00
+		else
+			veggies.delete("no veggies")
+			price += (veggies.length * 0.25)
+		end
+	extra = params[:extra].split(',')
+		if extra.length == 1
+			price += 0.00
+		else
+			extra.delete("no extras")
 			price += (extra.length * 0.50)
 		end
 	delivery = params[:delivery]
@@ -67,6 +91,6 @@ get '/summary' do
 			price += 10.00
 		end
 	address = params[:address]
-	erb :summary, locals:{size: size, crust: crust, meats: meats, veggies: veggies, extra: extra, price: price, delivery: delivery, address: address}
+	erb :summary, locals:{size: size, crust: crust, cheese: cheese, sauce: sauce, meats: meats, veggies: veggies, extra: extra, price: price, delivery: delivery, address: address}
 end
 

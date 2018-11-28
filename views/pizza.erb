@@ -1,49 +1,69 @@
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
 <form method = 'post' action = '/pizza'>
 
 Select pizza size:<br>
-<input type = "radio" name = "size" value = "small" checked>Small<br>
-<input type = "radio" name = "size" value = "medium">Medium<br>
-<input type = "radio" name = "size" value = "large">Large<br>
+<label><input type = "radio" name = "size" value = "small" checked>Small</label><br>
+<label><input type = "radio" name = "size" value = "medium">Medium</label><br>
+<label><input type = "radio" name = "size" value = "large">Large</label><br>
+<br>
+Select Crust:<br>
+<label><input type = "radio" name = "crust" value = "thin" checked>Thin</label><br>
+<label><input type = "radio" name = "crust" value = "regular">Regular</label><br>
+<label><input type = "radio" name = "crust" value = "stuffed">Stuffed</label><br>
 <br>
 
-Select Crust:<br>
-<input type = "radio" name = "crust" value = "thin" checked>Thin<br>
-<input type = "radio" name = "crust" value = "regular">Regular<br>
-<input type = "radio" name = "crust" value = "stuffed">Stuffed<br>
+Select Cheese:<br>
+<label><input type = "radio" name = "cheese" value = "regular" checked>Regular Cheese</label><br>
+<label><input type = "radio" name = "cheese" value = "extra">Extra Cheese</label><br>
+<label><input type = "radio" name = "cheese" value = "none">No Cheese</label><br>
+<br>
+
+Select Sauce:<br>
+<label><input type = "radio" name = "sauce" value = "pizza sauce" checked>Pizza Sauce</label><br>
+<label><input type = "radio" name = "sauce" value = "ranch">Ranch</label><br>
+<label><input type = "radio" name = "sauce" value = "marinara">Marinara</label><br>
+<label><input type = "radio" name = "sauce" value = "no sauce">No Sauce</label><br>
 <br>
 
 Select meats:<br>
-<input type = "checkbox" name = "meats[]" value = "pepperoni" checked>Pepperoni<br>
-<input type = "checkbox" name = "meats[]" value = "sausage">Sausage<br>
-<input type = "checkbox" name = "meats[]" value = "ham">Ham<br>
-<input type = "checkbox" name = "meats[]" value = "bacon">Bacon<br>
+<label><input type = "checkbox" name = "meats[]" value = "pepperoni">Pepperoni</label><br>
+<label><input type = "checkbox" name = "meats[]" value = "sausage">Sausage</label><br>
+<label><input type = "checkbox" name = "meats[]" value = "ham">Ham</label><br>
+<label><input type = "checkbox" name = "meats[]" value = "bacon">Bacon</label><br>
+<input type = "hidden" name = "meats[]" value = "no meat">
 <br>
 
 Select veggies:<br>
-<input type = "checkbox" name = "veggies[]" value = "mushrooms" checked>Mushrooms<br>
-<input type = "checkbox" name = "veggies[]" value = "banana peppers">Banana Peppers<br>
-<input type = "checkbox" name = "veggies[]" value = "green peppers">Green Peppers<br>
-<input type = "checkbox" name = "veggies[]" value = "pineapple">Pineapple<br>
-<br>
+<label><input type = "checkbox" name = "veggies[]" value = "mushrooms">Mushrooms</label><br>
+<label><input type = "checkbox" name = "veggies[]" value = "banana peppers">Banana Peppers</label><br>
+<label><input type = "checkbox" name = "veggies[]" value = "green peppers">Green Peppers</label><br>
+<label><input type = "checkbox" name = "veggies[]" value = "pineapple">Pineapple</label><br>
+<input type = "hidden" name = "veggies[]" value = "no veggies"><br>
 
 Select extras:<br>
-<input type = "checkbox" name = "extra[]" value = "extra bacon" checked>Extra Bacon<br>
-<input type = "checkbox" name = "extra[]" value = "extra ham">Extra Ham<br>
-<input type = "checkbox" name = "extra[]" value = "extra sausage">Extra Sausage<br>
-<input type = "checkbox" name = "extra[]" value = "extra pepperoni">Extra Pepperoni<br>
-<input type = "checkbox" name = "extra[]" value = "extra mushrooms">Extra Mushrooms<br>
-<input type = "checkbox" name = "extra[]" value = "extra bananapeppers">Banana Peppers<br>
-<input type = "checkbox" name = "extra[]" value = "extra greenpeppers">Extra Green Peppers<br>
-<input type = "checkbox" name = "extra[]" value = "extra pineapple">Extra Pineapple<br>
-<br>
-
+<label><input type = "checkbox" name = "extra[]" value = "extra bacon">Extra Bacon</label><br>
+<label><input type = "checkbox" name = "extra[]" value = "extra ham">Extra Ham</label><br>
+<label><input type = "checkbox" name = "extra[]" value = "extra sausage">Extra Sausage</label><br>
+<label><input type = "checkbox" name = "extra[]" value = "extra pepperoni">Extra Pepperoni</label><br>
+<label><input type = "checkbox" name = "extra[]" value = "extra mushrooms">Extra Mushrooms</label><br>
+<label><input type = "checkbox" name = "extra[]" value = "extra bananapeppers">Banana Peppers</label><br>
+<label><input type = "checkbox" name = "extra[]" value = "extra greenpeppers">Extra Green Peppers</label><br>
+<label><input type = "checkbox" name = "extra[]" value = "extra pineapple">Extra Pineapple</label><br>
+<input type = "hidden" name = "extra[]" value = "no extras">
+</label>
 <% if delivery == 'yes'%>
 Enter Address:<br>
 <input type = "text" name = "address" value = "" pattern = "[a-zA-Z0-9]{1-20}"><br>
+<% else %>
+<input type = "hidden" name = "address" value = "">
 <%end%>
 
 <input type = "submit" value = "submit">
 <input type = "hidden" name = "delivery" value = "<%= delivery%>">
 </form>
-
+</body>
 
