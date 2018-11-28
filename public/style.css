@@ -6,3 +6,19 @@ img {
     width: 150px;
     height: 140px;
 }
+li {
+	display: inline;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 20px 75px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

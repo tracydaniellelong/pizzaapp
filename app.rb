@@ -19,11 +19,7 @@ post '/pizza' do
 	crust = params[:crust]
 	cheese = params[:cheese]
 	sauce = params[:sauce]
-	if params[:meats].count > 1
-		meats = params[:meats].join(',')
-	else
-		meats = params[:meats]
-	end
+	meats = params[:meats].join(',')
 	veggies = params[:veggies].join(',')
 	extra = params[:extra].join(',')
 	delivery = params[:delivery]
@@ -68,22 +64,23 @@ get '/summary' do
 	meats = params[:meats].split(',')
 		if meats.count == 1
 			price += 0.00
+			meats.to_s
 		else
-			meats.delete("no meat")
+			meats.delete("no")
 			price += (meats.count * 0.25)
 		end
 	veggies = params[:veggies].split(',')
 		if veggies.length == 1 
 			price += 0.00
 		else
-			veggies.delete("no veggies")
+			veggies.delete("no")
 			price += (veggies.length * 0.25)
 		end
 	extra = params[:extra].split(',')
 		if extra.length == 1
 			price += 0.00
 		else
-			extra.delete("no extras")
+			extra.delete("no")
 			price += (extra.length * 0.50)
 		end
 	delivery = params[:delivery]

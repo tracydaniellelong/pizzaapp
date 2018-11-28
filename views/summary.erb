@@ -8,12 +8,19 @@ Size: <%= size%><br>
 Crust: <%= crust%><br>
 Cheese: <%= cheese%><br>
 Sauce: <%= sauce%><br>
-Meats: <%= meats%><br>
-Veggies: <%= veggies%><br>
-Extra: <%= extra%><br>
-Delivery: <%= delivery%><br>
+<% if meats != ["no"] %> 
+	Meats: <%= meats%><br>
+<%end%>
+<% if veggies != ["no"] %>
+	Veggies: <%= veggies%><br>
+<%end%>
+<% if extra != ["no"] %>
+	Extra: <%= extra%><br>
+<%end%>
 <% if delivery == "yes"%>
-Address: <%= address%>
+	Delivery address: <%= address%>
+<% else %>
+	<%= delivery%>
 <%end%>
 <br>
 Price: $<%= price%>
