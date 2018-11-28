@@ -19,9 +19,21 @@ post '/pizza' do
 	crust = params[:crust]
 	cheese = params[:cheese]
 	sauce = params[:sauce]
-	meats = params[:meats].join(',')
-	veggies = params[:veggies].join(',')
-	extra = params[:extra].join(',')
+	if params[:meats]
+		meats = params[:meats].join(',')
+	else
+		meats = "no"
+	end
+	if params[:veggies]
+		veggies = params[:veggies].join(',')
+	else
+		veggies = "no"
+	end
+	if params[:extra]
+		extra = params[:extra].join(',')
+	else
+		extra = "no"
+	end
 	delivery = params[:delivery]
 	address = params[:address]
 	redirect '/summary?size=' + size + '&crust=' + crust + '&cheese=' + cheese + '&sauce=' + sauce + '&meats=' + meats + '&veggies=' + veggies + '&extra=' + extra + '&delivery=' + delivery + '&address=' + address
@@ -61,33 +73,23 @@ get '/summary' do
 		else
 			price += 0.50
 		end
-	meats = params[:meats].split(',')
-		if meats.count == 1
-			price += 0.00
-			meats.to_s
-		else
-			meats.delete("no")
+		if params[:meats] != ["no"]
+			meats = params[:meats].split(',')
 			price += (meats.count * 0.25)
 		end
-	veggies = params[:veggies].split(',')
-		if veggies.length == 1 
-			price += 0.00
-		else
-			veggies.delete("no")
-			price += (veggies.length * 0.25)
+		if params[:veggies] != ["no"]
+			veggies = params[:veggies].split(',')
+			price += (veggies.count * 0.25)
 		end
-	extra = params[:extra].split(',')
-		if extra.length == 1
-			price += 0.00
-		else
-			extra.delete("no")
-			price += (extra.length * 0.50)
+		if params[:extra] != ["no"]
+			extra = params[:extra].split(',')
+			price += (extra.count * 0.25)
 		end
 	delivery = params[:delivery]
 		if delivery == "yes"
 			price += 10.00
 		end
 	address = params[:address]
-	erb :summary, locals:{size: size, crust: crust, cheese: cheese, sauce: sauce, meats: meats, veggies: veggies, extra: extra, price: price, delivery: delivery, address: address}
+	erb :summary, locals:{size: size, crust: crust, cheese: cheese, sauce: sauce, meats: meats, veggies: veggies, extra: extra, price: price.to_f, delivery: delivery, address: address}
 end
 

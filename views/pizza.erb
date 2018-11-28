@@ -32,22 +32,21 @@ Select Sauce:<br>
 <li><label><img src = "/images/ranch.jpg"><input type = "radio" name = "sauce" value = "ranch">Ranch</label></li>
 <li><label><img src = "/images/marinara.jpg"><input type = "radio" name = "sauce" value = "marinara">Marinara</label></li>
 <br>
-
+<br>
 Select meats:<br>
 <li><label><img src = "/images/pepperoni.jpg"><input type = "checkbox" name = "meats[]" value = "pepperoni">Pepperoni</label></li>
 <li><label><img src = "/images/sausage.jpg"><input type = "checkbox" name = "meats[]" value = "sausage">Sausage</label></li>
 <li><label><img src = "/images/ham.jpg"><input type = "checkbox" name = "meats[]" value = "ham">Ham</label></li>
 <li><label><img src = "/images/bacon.jpg"><input type = "checkbox" name = "meats[]" value = "bacon">Bacon</label></li>
-<input type = "hidden" name = "meats[]" value = "no">
 <br>
-
+<br>
 Select veggies:<br>
 <li><label><img src = "/images/mushrooms.jpg"><input type = "checkbox" name = "veggies[]" value = "mushrooms">Mushrooms</label></li>
 <li><label><img src = "/images/bananapepper.jpg"><input type = "checkbox" name = "veggies[]" value = "banana peppers">Banana Peppers</label></li>
 <li><label><img src = "/images/greenpeppers.jpg"><input type = "checkbox" name = "veggies[]" value = "green peppers">Green Peppers</label></li>
 <li><label><img src = "/images/pineapple.jpg"><input type = "checkbox" name = "veggies[]" value = "pineapple">Pineapple</label></li>
-<input type = "hidden" name = "veggies[]" value = "no"><br>
-
+<br>
+<br>
 Select extras:<br>
 <li><label><img src = "/images/bacon.jpg"><input type = "checkbox" name = "extra[]" value = "extra bacon">Extra Bacon</label></li>
 <li><label><img src = "/images/ham.jpg"><input type = "checkbox" name = "extra[]" value = "extra ham">Extra Ham</label></li>
@@ -66,7 +65,8 @@ Enter Address:<br>
 <input type = "hidden" name = "address" value = "">
 <%end%>
 
-<button class = "button submit">Submit</button>
+<button type = "button" name = "submit">Submit</button><br>
+<button type = "button" value = "reset" onclick="window.location.href='/pizza'">Another Pizza</button>
 <input type = "hidden" name = "delivery" value = "<%= delivery%>">
 </form>
 </body>
