@@ -1,29 +1,25 @@
-<head>
-  <link rel="stylesheet" href="style.css">
-</head>
 
-<body>
+
+<form method = 'post' action = '/summary'>
+
+Delivery:
+<%= delivery %>
+<br>
+Your address:
+<%= address %>
+<br>
 Your pizza:<br>
-Size: <%= size%><br>
-Crust: <%= crust%><br>
-Cheese: <%= cheese%><br>
-Sauce: <%= sauce%><br>
-<% if meats != ["no"] %> 
-	Meats: <%= meats%><br>
-<%end%>
-<% if veggies != ["no"] %>
-	Veggies: <%= veggies%><br>
-<%end%>
-<% if extra != ["no"] %>
-	Extra: <%= extra%><br>
-<%end%>
-<% if delivery == "yes"%>
-	Delivery address: <%= address%>
+<div>
+<% counter = 0 %>
+<% pizzalist.each do |item| %>
+<% if item == "small" || item == "medium" || item == "large" || item == "thin" || item == "regular" || item == "stuffed" %>
+<%= item %><input type = hidden name = "<%= item + counter.to_s %>" value = "yes"><br>
 <% else %>
-	<%= delivery%>
-<%end%>
-<br>
-Price: $<%= price%>
-<br>
-</body>
+<%= item  %><input type = "radio" name = "<%= item + counter.to_s %>" value = "yes" checked>Keep<input type = "radio" name = "<%= item + counter.to_s %>" value = "no">Discard<br>
+<% end %>
+<% counter += 1 %>
+<% end %>
+</div>
+<input type = "submit" value = "submit">
 
+</form>

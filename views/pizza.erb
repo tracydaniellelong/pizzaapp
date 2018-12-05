@@ -5,58 +5,31 @@
 <body>
 <form method = 'post' action = '/pizza'>
 
-
 Select pizza size:<br>
-<li><label><img src = "/images/small.jpg"><input id = "small" type = "radio" name = "size" value = "small" checked>Small</label></li>
-<li><label><img src = "/images/medium.jpg"><input id = "medium" type = "radio" name = "size" value = "medium">Medium</label></li>
-<li><label><img src = "/images/large.jpg"><input id = "large" type = "radio" name = "size" value = "large">Large</label></li>
+<input name = "size" type = "radio" id = "small" value = "small"checked><label for = "small"><img src = "/images/small.jpg">Small</label>
+<input name = "size" type = "radio" id = "medium" value = "medium"><label for = "medium"><img src = "/images/medium.jpg">Medium</label>
+<input name = "size" type = "radio" id = "large" value = "large"><label for = "large"><img src = "/images/large.jpg">Large</label>
 <br>
 
 
 Select Crust:<br>
-<li><label><img src = "/images/thincrust.jpg"><input type = "radio" name = "crust" value = "thin" checked>Thin</label></li>
-<li><label><img src = "/images/regularcrust.jpg"><input type = "radio" name = "crust" value = "regular">Regular</label></li>
-<li><label><img src = "/images/stuffedcrust.jpg"><input type = "radio" name = "crust" value = "stuffed">Stuffed</label></li>
+<input name = "crust" type = "radio" id = "thin" value = "thin"checked><label for = "thin"><img src = "/images/thincrust.jpg">Thin</label>
+<input name = "crust" type = "radio" id = "regular" value = "regular"><label for = "regular"><img src = "/images/regularcrust.jpg">Regular</label>
+<input name = "crust" type = "radio" id = "stuffed" value = "stuffed"><label for = "stuffed"><img src = "/images/stuffedcrust.jpg">Stuffed</label>
 <br>
 
-
-Select Cheese:<br>
-<img src = "/images/cheese.jpg"><br>
-<label><input type = "radio" name = "cheese" value = "regular" checked>Regular Cheese</label>
-<label><input type = "radio" name = "cheese" value = "extra">Extra Cheese</label><br>
-<br>
-
-
-Select Sauce:<br>
-<li><label><img src = "/images/pizzasauce.jpg"><input type = "radio" name = "sauce" value = "pizza sauce" checked>Pizza Sauce</label></li>
-<li><label><img src = "/images/ranch.jpg"><input type = "radio" name = "sauce" value = "ranch">Ranch</label></li>
-<li><label><img src = "/images/marinara.jpg"><input type = "radio" name = "sauce" value = "marinara">Marinara</label></li>
-<br>
-<br>
 Select meats:<br>
-<li><label><img src = "/images/pepperoni.jpg"><input type = "checkbox" name = "meats[]" value = "pepperoni">Pepperoni</label></li>
-<li><label><img src = "/images/sausage.jpg"><input type = "checkbox" name = "meats[]" value = "sausage">Sausage</label></li>
-<li><label><img src = "/images/ham.jpg"><input type = "checkbox" name = "meats[]" value = "ham">Ham</label></li>
-<li><label><img src = "/images/bacon.jpg"><input type = "checkbox" name = "meats[]" value = "bacon">Bacon</label></li>
-<br>
+<input name = "meats[]" type = "checkbox" id = "pepperoni" value = "pepperoni"checked><label for = "pepperoni"><img src = "/images/pepperoni.jpg">Pepperoni</label>
+<input name = "meats[]" type = "checkbox" id  = "sausage" value = "sausage"><label for = "sausage"><img src = "/images/sausage.jpg">Sausage</label>
+<input name = "meats[]" type = "checkbox" id = "ham" value = "ham"><label for = "ham"><img src = "/images/ham.jpg">Ham</label>
+<input name = "meats[]" type = "checkbox" id = "bacon" value = "bacon"><label for "bacon"><img src = "/images/bacon.jpg">Bacon</label>
 <br>
 Select veggies:<br>
-<li><label><img src = "/images/mushrooms.jpg"><input type = "checkbox" name = "veggies[]" value = "mushrooms">Mushrooms</label></li>
-<li><label><img src = "/images/bananapepper.jpg"><input type = "checkbox" name = "veggies[]" value = "banana peppers">Banana Peppers</label></li>
-<li><label><img src = "/images/greenpeppers.jpg"><input type = "checkbox" name = "veggies[]" value = "green peppers">Green Peppers</label></li>
-<li><label><img src = "/images/pineapple.jpg"><input type = "checkbox" name = "veggies[]" value = "pineapple">Pineapple</label></li>
-<br>
-<br>
-Select extras:<br>
-<li><label><img src = "/images/bacon.jpg"><input type = "checkbox" name = "extra[]" value = "extra bacon">Extra Bacon</label></li>
-<li><label><img src = "/images/ham.jpg"><input type = "checkbox" name = "extra[]" value = "extra ham">Extra Ham</label></li>
-<li><label><img src = "/images/sausage.jpg"><input type = "checkbox" name = "extra[]" value = "extra sausage">Extra Sausage</label></li>
-<li><label><img src = "/images/pepperoni.jpg"><input type = "checkbox" name = "extra[]" value = "extra pepperoni">Extra Pepperoni</label></li>
-<li><label><img src = "/images/mushrooms.jpg"><input type = "checkbox" name = "extra[]" value = "extra mushrooms">Extra Mushrooms</label></li>
-<li><label><img src = "/images/bananapepper.jpg"><input type = "checkbox" name = "extra[]" value = "extra bananapeppers">Banana Peppers</label></li>
-<li><label><img src = "/images/greenpeppers.jpg"><input type = "checkbox" name = "extra[]" value = "extra greenpeppers">Extra Green Peppers</label></li>
-<li><label><img src = "/images/pineapple.jpg"><input type = "checkbox" name = "extra[]" value = "extra pineapple">Extra Pineapple</label></li>
-<input type = "hidden" name = "extra[]" value = "no">
+
+<li><input name = "veggies[]" type = "checkbox" id = "mushrooms" value = "mushrooms"checked><img src = "/images/mushrooms.jpg"><div class = "text">Mushrooms</div></li>
+<li><input name = "veggies[]" type = "checkbox" id = "peppers" value = "peppers"><img src = "/images/pepper.jpg"><div class = "text">Banana Peppers</div></li>
+<li><input name = "veggies[]"type = "checkbox" id = "pineapple" value = "pineapple"><img src = "/images/pineapple.jpg"><div class = "text">Pineapple</div></li>
+
 <br>
 <% if delivery == 'yes'%>
 Enter Address:<br>
@@ -64,10 +37,15 @@ Enter Address:<br>
 <% else %>
 <input type = "hidden" name = "address" value = "">
 <%end%>
+Would you like another pizza?<br>
+<input type = "radio" name = "another" value = "yes"><label for = "yes">Yes</label>
+<input type = "radio" name = "another" value = "no"><label for = "no">No</label>
+<br>
 
-<button type = "button" name = "submit">Submit</button><br>
-<button type = "button" value = "reset" onclick="window.location.href='/pizza'">Another Pizza</button>
-<input type = "hidden" name = "delivery" value = "<%= delivery%>">
+<input type = "submit" value = "submit"><br>
+<input type = "hidden" name = "delivery" value = "<%= delivery %>">
+<input type = "hidden" name = "pizzalist" value = "<%= pizzalist%>">
+</div>
+
 </form>
 </body>
-

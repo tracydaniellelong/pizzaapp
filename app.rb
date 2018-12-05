@@ -9,87 +9,66 @@ post '/home' do
 	redirect '/pizza?delivery=' + delivery
 end
 
+
 get '/pizza' do
+	pizzalist = params[:pizzalist]
 	delivery = params[:delivery]
-	erb :pizza, locals:{delivery: delivery}
+	erb :pizza, locals: {delivery: delivery, pizzalist: pizzalist}
 end
 
+
 post '/pizza' do
-	size = params[:size]
-	crust = params[:crust]
-	cheese = params[:cheese]
-	sauce = params[:sauce]
-	if params[:meats]
-		meats = params[:meats].join(',')
-	else
-		meats = "no"
+delivery = params[:delivery]
+another = params[:another]
+address = params[:address]
+size = params[:size]
+crust = params[:crust]
+	if params[:meats] != nil
+			meats = params[:meats]
 	end
-	if params[:veggies]
-		veggies = params[:veggies].join(',')
-	else
-		veggies = "no"
+	if params[:veggies] != nil
+			veggies = params[:veggies]
 	end
-	if params[:extra]
-		extra = params[:extra].join(',')
-	else
-		extra = "no"
+	if params[:extras] != nil
+		extras = params[:extra]
 	end
-	delivery = params[:delivery]
-	address = params[:address]
-	redirect '/summary?size=' + size + '&crust=' + crust + '&cheese=' + cheese + '&sauce=' + sauce + '&meats=' + meats + '&veggies=' + veggies + '&extra=' + extra + '&delivery=' + delivery + '&address=' + address
+pizza = params[:pizzalist]
+pizzalist = []
+pizzalist << size
+pizzalist << crust
+pizzalist << meats
+pizzalist << veggies
+pizzalist << pizza
+
+	if another == "yes"
+		redirect '/pizza?pizzalist=' + pizzalist.join(',') + '&delivery=' + delivery = '&address=' + address
+	else
+		redirect '/summary?delivery=' + delivery + '&address=' + address + '&pizzalist=' + pizzalist.join(",")
+	end
 end
 
 get '/summary' do
-	price = 0.00
-	size = params[:size]
-		if size == 'small'
-			price += 5.00
-		elsif size == 'medium'
-			price += 6.00
-		elsif size == 'large'
-			price += 7.00
-		end
-	crust = params[:crust]
-		if crust == 'thin'
-			price += 0.50
-		elsif crust == 'regular'
-			price += 0.75
-		elsif crust == 'stuffed'
-			price += 1.00
-		end
-	cheese = params[:cheese]
-		if cheese == 'regular' || cheese == 'none'
-			price += 0.00
-		else
-			price += 0.50
-		end
-	sauce = params[:sauce]
-		if sauce == 'pizza sauce'
-			price += 0.25
-		elsif sauce == 'ranch'
-			price += 0.30
-		elsif sauce == 'no sauce'
-			price += 0.00
-		else
-			price += 0.50
-		end
-		if params[:meats] != ["no"]
-			meats = params[:meats].split(',')
-			price += (meats.count * 0.25)
-		end
-		if params[:veggies] != ["no"]
-			veggies = params[:veggies].split(',')
-			price += (veggies.count * 0.25)
-		end
-		if params[:extra] != ["no"]
-			extra = params[:extra].split(',')
-			price += (extra.count * 0.25)
-		end
+	pizzalist = params[:pizzalist].split(',')
 	delivery = params[:delivery]
-		if delivery == "yes"
-			price += 10.00
-		end
 	address = params[:address]
-	erb :summary, locals:{size: size, crust: crust, cheese: cheese, sauce: sauce, meats: meats, veggies: veggies, extra: extra, price: price.to_f, delivery: delivery, address: address}
+
+	erb :summary, locals: {pizzalist: pizzalist, delivery: delivery, address: address}
 end
 
+post '/summary' do
+	newpizza = []
+	toppings = params
+	p "toppings #{toppings}"
+	toppings.each do |key, value|
+		if toppings.value?('yes')
+			newpizza << key
+		end
+	end
+	redirect '/final?&newpizza=' + newpizza.join(',')
+end
+
+get '/final' do
+	newpizza = params[:newpizza].split(',')
+
+	erb :final, locals: {newpizza: newpizza}
+end

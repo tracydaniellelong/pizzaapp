@@ -1,0 +1,9 @@
+
+<% newpizza.each do |item| %>
+
+<% if item.include?("small") %>
+<br>
+<% end %>
+<%= item.tr("0-9", "") %>
+<br>
+<% end %>
