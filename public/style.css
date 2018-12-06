@@ -12,6 +12,19 @@ img {
     display: inline;
 }
 
+p {
+  color: #4CAF50;
+  display: inline;
+}
+
+b {
+  color: #4CAF50;
+}
+
+h1 {
+  color: #4CAF50;
+}
+
 li {
 	display: inline;
 	list-style: none;

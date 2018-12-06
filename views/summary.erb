@@ -3,20 +3,19 @@
 </head>
 
 <form method = 'post' action = '/summary'>
-
-
-<h1>Your pizza:</h1><br>
+<h1>Your pizza:</h1>
 <div>
 <% counter = 0 %>
 <% pizzalist.each do |item| %>
 <% if item == "small" || item == "medium" || item == "large" || item == "thin" || item == "regular" || item == "stuffed" %>
-<%= item %><input type = hidden name = "<%= item + counter.to_s %>" value = "yes">
+<b><%= item %></b><input type = hidden name = "<%= item + counter.to_s %>" value = "yes">
 <br>
 <% else %>
-<%= item  %>
+<p><%= item  %>
 <input type = "radio" name = "<%= item + counter.to_s %>" value = "yes" checked>Keep
 <input type = "radio" name = "<%= item + counter.to_s %>" value = "no">Discard
 <br>
+</p>
 <% end %>
 <% counter += 1 %>
 <% end %>
