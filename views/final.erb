@@ -1,13 +1,21 @@
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+<h1>Your Order</h1>
 <% newpizza.each do |item| %>
 
 <% if item.include?("small") %>
 <br>
 <% end %>
-<%= item.tr("0-9", "") %>
+  <%= item.tr("0-9", "") %>
 <br>
 <% end %>
 
 <% if address != "" %>
-Delivery Address:<br><%= address %>
+  <h1>Delivery Address:</h1>
+  <br>
+  <%= address %>
 <% end %>
+</body>
