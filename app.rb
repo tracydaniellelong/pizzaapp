@@ -51,24 +51,36 @@ get '/summary' do
 	pizzalist = params[:pizzalist].split(',')
 	delivery = params[:delivery]
 	address = params[:address]
-
-	erb :summary, locals: {pizzalist: pizzalist, delivery: delivery, address: address}
+	price = 0.00
+	pizzalist.each do |item|
+		if item == "small"
+			price += 5.00
+		end
+		if item == "medium"
+			price += 7.00
+		end
+		if item == "large"
+			price += 10.00
+		end
+	end
+	puts price
+	erb :summary, locals: {pizzalist: pizzalist, delivery: delivery, address: address, price: price}
 end
 
 post '/summary' do
+	address = params[:address]
 	newpizza = []
 	toppings = params
-	p "toppings #{toppings}"
 	toppings.each do |key, value|
-		if toppings.value?('yes')
+		if value == "yes"
 			newpizza << key
 		end
 	end
-	redirect '/final?&newpizza=' + newpizza.join(',')
+	redirect '/final?&newpizza=' + newpizza.join(',') + '&address=' + address
 end
 
 get '/final' do
 	newpizza = params[:newpizza].split(',')
-
-	erb :final, locals: {newpizza: newpizza}
+	address = params[:address]
+	erb :final, locals: {newpizza: newpizza, address: address}
 end

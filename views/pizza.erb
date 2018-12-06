@@ -6,46 +6,46 @@
 <form method = 'post' action = '/pizza'>
 
 Select pizza size:<br>
-<input name = "size" type = "radio" id = "small" value = "small"checked><label for = "small"><img src = "/images/small.jpg">Small</label>
-<input name = "size" type = "radio" id = "medium" value = "medium"><label for = "medium"><img src = "/images/medium.jpg">Medium</label>
-<input name = "size" type = "radio" id = "large" value = "large"><label for = "large"><img src = "/images/large.jpg">Large</label>
+<label><img src = "/images/small.jpg"><input name = "size" type = "radio" id = "small" value = "small"checked>Small</label>
+<label><img src = "/images/medium.jpg"><input name = "size" type = "radio" id = "medium" value = "medium">Medium</label>
+<label><img src = "/images/large.jpg"><input name = "size" type = "radio" id = "large" value = "large">Large</label>
 <br>
-
+<br>
 
 Select Crust:<br>
-<input name = "crust" type = "radio" id = "thin" value = "thin"checked><label for = "thin"><img src = "/images/thincrust.jpg">Thin</label>
-<input name = "crust" type = "radio" id = "regular" value = "regular"><label for = "regular"><img src = "/images/regularcrust.jpg">Regular</label>
-<input name = "crust" type = "radio" id = "stuffed" value = "stuffed"><label for = "stuffed"><img src = "/images/stuffedcrust.jpg">Stuffed</label>
+<label><img src = "/images/thincrust.jpg"><input name = "crust" type = "radio" id = "thin" value = "thin"checked>Thin</label>
+<label><img src = "/images/regularcrust.jpg"><input name = "crust" type = "radio" id = "regular" value = "regular">Regular</label>
+<label><img src = "/images/stuffedcrust.jpg"><input name = "crust" type = "radio" id = "stuffed" value = "stuffed">Stuffed</label>
 <br>
-
+<br>
 Select meats:<br>
-<input name = "meats[]" type = "checkbox" id = "pepperoni" value = "pepperoni"checked><label for = "pepperoni"><img src = "/images/pepperoni.jpg">Pepperoni</label>
-<input name = "meats[]" type = "checkbox" id  = "sausage" value = "sausage"><label for = "sausage"><img src = "/images/sausage.jpg">Sausage</label>
-<input name = "meats[]" type = "checkbox" id = "ham" value = "ham"><label for = "ham"><img src = "/images/ham.jpg">Ham</label>
-<input name = "meats[]" type = "checkbox" id = "bacon" value = "bacon"><label for "bacon"><img src = "/images/bacon.jpg">Bacon</label>
+<label><img src = "/images/pepperoni.jpg"><input name = "meats[]" type = "checkbox" id = "pepperoni" value = "pepperoni"checked>Pepperoni</label>
+<label><img src = "/images/sausage.jpg"><input name = "meats[]" type = "checkbox" id  = "sausage" value = "sausage">Sausage</label>
+<label><img src = "/images/ham.jpg"><input name = "meats[]" type = "checkbox" id = "ham" value = "ham">Ham</label>
+<label><img src = "/images/bacon.jpg"><input name = "meats[]" type = "checkbox" id = "bacon" value = "bacon">Bacon</label>
+<br>
 <br>
 Select veggies:<br>
-
-<li><input name = "veggies[]" type = "checkbox" id = "mushrooms" value = "mushrooms"checked><img src = "/images/mushrooms.jpg"><div class = "text">Mushrooms</div></li>
-<li><input name = "veggies[]" type = "checkbox" id = "peppers" value = "peppers"><img src = "/images/pepper.jpg"><div class = "text">Banana Peppers</div></li>
-<li><input name = "veggies[]"type = "checkbox" id = "pineapple" value = "pineapple"><img src = "/images/pineapple.jpg"><div class = "text">Pineapple</div></li>
-
+<label><img src = "/images/mushrooms.jpg"><input name = "veggies[]" type = "checkbox" value = "mushrooms"checked>Mushrooms</label>
+<label><img src = "/images/pepper.jpg"><input name = "veggies[]" type = "checkbox" value = "peppers">Banana Peppers</label>
+<label><img src = "/images/pineapple.jpg"><input name = "veggies[]"type = "checkbox" value = "pineapple">Pineapple</label>
+<br>
 <br>
 <% if delivery == 'yes'%>
 Enter Address:<br>
-<input type = "text" name = "address" value = "" pattern = "[a-zA-Z0-9]{1-20}"><br>
+<input type = "text" name = "address" value = "" pattern = "[a-zA-Z0-9]{1-20}"><br><br>
 <% else %>
 <input type = "hidden" name = "address" value = "">
 <%end%>
 Would you like another pizza?<br>
-<input type = "radio" name = "another" value = "yes"><label for = "yes">Yes</label>
-<input type = "radio" name = "another" value = "no"><label for = "no">No</label>
+<label><input type = "radio" name = "another" value = "yes">Yes</label>
+<label><input type = "radio" name = "another" value = "no">No</label>
+<br>
 <br>
 
 <input type = "submit" value = "submit"><br>
 <input type = "hidden" name = "delivery" value = "<%= delivery %>">
 <input type = "hidden" name = "pizzalist" value = "<%= pizzalist%>">
-</div>
 
 </form>
 </body>
