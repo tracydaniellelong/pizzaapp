@@ -4,23 +4,16 @@ get '/' do
 	erb :home
 end
 
-post '/home' do
-	delivery = params[:delivery]
-	redirect '/pizza?delivery=' + delivery
-end
-
+post '/home'
 
 get '/pizza' do
 	pizzalist = params[:pizzalist]
-	delivery = params[:delivery]
-	erb :pizza, locals: {delivery: delivery, pizzalist: pizzalist}
+	erb :pizza, locals: {pizzalist: pizzalist}
 end
 
 
 post '/pizza' do
-delivery = params[:delivery]
 another = params[:another]
-address = params[:address]
 size = params[:size]
 crust = params[:crust]
 	if params[:meats] != nil
@@ -41,34 +34,19 @@ pizzalist << veggies
 pizzalist << pizza
 
 	if another == "yes"
-		redirect '/pizza?pizzalist=' + pizzalist.join(',') + '&delivery=' + delivery = '&address=' + address
+		redirect '/pizza?pizzalist=' + pizzalist.join(',')
 	else
-		redirect '/summary?delivery=' + delivery + '&address=' + address + '&pizzalist=' + pizzalist.join(",")
+		redirect '/summary?pizzalist=' + pizzalist.join(",")
 	end
 end
 
 get '/summary' do
 	pizzalist = params[:pizzalist].split(',')
-	delivery = params[:delivery]
-	address = params[:address]
-	price = 0.00
-	pizzalist.each do |item|
-		if item == "small"
-			price += 5.00
-		end
-		if item == "medium"
-			price += 7.00
-		end
-		if item == "large"
-			price += 10.00
-		end
-	end
-	puts price
-	erb :summary, locals: {pizzalist: pizzalist, delivery: delivery, address: address, price: price}
+	erb :summary, locals: {pizzalist: pizzalist}
 end
 
 post '/summary' do
-	address = params[:address]
+	delivery = params[:delivery]
 	newpizza = []
 	toppings = params
 	toppings.each do |key, value|
@@ -76,11 +54,45 @@ post '/summary' do
 			newpizza << key
 		end
 	end
-	redirect '/final?&newpizza=' + newpizza.join(',') + '&address=' + address
+	pizzas = []
+		newpizza.each do |item|
+			pizzas << item.tr("0-9", "")
+		end
+	redirect '/confirm?newpizza=' + newpizza.join(',') + '&delivery=' + delivery + '&pizzas=' + pizzas.join(',')
+end
+
+get '/confirm' do
+	delivery = params[:delivery]
+	pizzas = params[:pizzas].split(',')
+
+		price = 0.00
+		price += pizzas.count("small") * 6.00
+		price += pizzas.count("medium") * 8.00
+		price += pizzas.count("large") * 10.00
+		price += pizzas.count("thin") * 0.50
+		price += pizzas.count("stuffed") * 1.50
+		price += pizzas.count("pepperoni") * 0.50
+		price += pizzas.count("ham") * 0.50
+		price += pizzas.count("bacon") * 0.50
+		price += pizzas.count("sausage") * 0.50
+		price += pizzas.count("mushrooms") * 0.50
+		price += pizzas.count("peppers") * 0.50
+		price += pizzas.count("pineapple") * 0.50
+	erb :confirm, locals: {delivery: delivery, price: price, pizzas: pizzas}
+end
+
+post '/confirm' do
+delivery = params[:delivery]
+address = params[:address]
+redirect '/final?delivery=' + delivery + '&address=' + address
 end
 
 get '/final' do
-	newpizza = params[:newpizza].split(',')
+	delivery = params[:delivery]
 	address = params[:address]
-	erb :final, locals: {newpizza: newpizza, address: address}
+	price = params[:price].to_i
+	if delivery == "yes"
+		price += 10
+	end
+	erb :final, locals: {delivery: delivery, address: address, price: price}
 end

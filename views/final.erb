@@ -4,18 +4,20 @@
 
 <body>
 <h1>Your Order</h1>
-<% newpizza.each do |item| %>
 
-<% if item.include?("small") %>
+<% pizzas.each do |item| %>
+
+<% if item.include?("small") || item.include?("medium") || item.include?("large") %>
 <br>
 <% end %>
-  <%= item.tr("0-9", "") %>
+<b>  <%= item %></b>
 <br>
 <% end %>
 
-<% if address != "" %>
+<% if delivery == "yes" %>
   <h1>Delivery Address:</h1>
-  <br>
-  <%= address %>
+  <b><%= address %>
 <% end %>
+
+<h1>Total: $<%= price %></h1>
 </body>

@@ -73,16 +73,6 @@
   <input name = "veggies[]"type = "checkbox" value = "pineapple"><p>Pineapple</p>
 </label>
 <br>
-<br>
-<% if delivery == 'yes'%>
-<h1>Enter Address:</h1><br>
-<br>
-<input type = "text" name = "address" value = "" pattern = "[a-zA-Z0-9]{1-20}">
-<br>
-<br>
-<% else %>
-<input type = "hidden" name = "address" value = "">
-<%end%>
 <h1>Would you like another pizza?</h1><br>
 <br>
 <label>
@@ -95,7 +85,6 @@
 <br>
 <input type = "submit" value = "submit">
 <br>
-<input type = "hidden" name = "delivery" value = "<%= delivery %>">
-<input type = "hidden" name = "pizzalist" value = "<%= pizzalist%>">
+
 </form>
 </body>
