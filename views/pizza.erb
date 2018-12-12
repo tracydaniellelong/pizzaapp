@@ -79,12 +79,14 @@
   <input type = "radio" name = "another" value = "yes"><p>Yes</p>
 </label>
 <label>
-  <input type = "radio" name = "another" value = "no"><p>No</p>
+  <input type = "radio" name = "another" value = "no"checked><p>No</p>
 </label>
 <br>
 <br>
 <input type = "submit" value = "submit">
 <br>
-
+<% if params[:pizzalist] != nil %>
+<input type = "hidden" name = "pizzalist[]" value = "<%= pizzalist %>">
+<% end %>
 </form>
 </body>

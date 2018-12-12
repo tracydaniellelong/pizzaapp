@@ -6,28 +6,26 @@
 <form method = 'post' action = '/confirm'>
 <h1>Your Order</h1>
 
-<% pizzas.each do |item| %>
+<% pizza.each do |item| %>
 
 <% if item.include?("small") || item.include?("medium") || item.include?("large") %>
 <br>
 <% end %>
-<b>  <%= item.tr("0-9", "") %></b>
-<br>
+<label> <img src = "/images/<%=item.tr("0-9", "")%>.jpg"> <b><%= item.tr("0-9", "") %></b></label>
 <% end %>
 
-<h1>Subtotal: $<%= price %></h1>
+<h1>Subtotal: $<%= '%.2f' % price %></h1>
 <% if delivery == "delivery" %>
   <h1>Delivery Address:</h1>
   <br>
   <input type = "text" name = "address" pattern = "[a-zA-Z0-9]{1-20}">
 <% else %>
+  <h1><%= delivery %></h1>
   <input type = "hidden" name = "address" value = "">
 <% end %>
-<br>
-<br>
 <input type = "submit" value = "submit">
 <input type = "hidden" name = "delivery" value = "<%= delivery %>">
 <input type = "hidden" name = "price" value = "<%= price %>">
-<input type = "hidden" name = "pizzas" value = "<%= pizzas %>">
+<input type = "hidden" name = "pizza" value = "<%= pizza.join(",") %>">
 </form>
 </body>

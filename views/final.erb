@@ -5,13 +5,12 @@
 <body>
 <h1>Your Order</h1>
 
-<% pizzas.each do |item| %>
+<% pizza.each do |item| %>
 
 <% if item.include?("small") || item.include?("medium") || item.include?("large") %>
 <br>
 <% end %>
-<b>  <%= item %></b>
-<br>
+ <label><img src = "/images/<%=item.tr("0-9", "")%>.jpg"> <b><%= item.tr("0-9", "") %></b></label>
 <% end %>
 
 <% if delivery == "yes" %>
@@ -19,5 +18,5 @@
   <b><%= address %>
 <% end %>
 
-<h1>Total: $<%= price %></h1>
+<h1>Total: $<%= '%.2f' % price %></h1>
 </body>
